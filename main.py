@@ -77,6 +77,13 @@ def load_config(mode=None):
     parser.add_argument('--path', '--checkpoints', type=str, default='./checkpoints', help='model checkpoints path (default: ./checkpoints)')
     parser.add_argument('--model', type=int, choices=[1, 2, 3], help='1: landmark prediction model, 2: inpaint model, 3: joint model')
 
+    # test mode
+    if mode == 2:
+        parser.add_argument('--input', type=str, help='path to the input images directory or an input image')
+        parser.add_argument('--mask', type=str, help='path to the masks directory or a mask file')
+        parser.add_argument('--landmark', type=str, help='path to the landmarks directory or a landmark file')
+        parser.add_argument('--output', type=str, help='path to the output directory')
+
     args = parser.parse_args()
     config_path = os.path.join(args.path, 'config.yml')
 
@@ -103,13 +110,13 @@ def load_config(mode=None):
         config.MODEL = args.model if args.model is not None else 3
 
         if args.input is not None:
-            config.TEST_FLIST = args.input
+            config.TEST_INPAINT_IMAGE_FLIST = args.input
 
         if args.mask is not None:
             config.TEST_MASK_FLIST = args.mask
 
-        if args.edge is not None:
-            config.TEST_EDGE_FLIST = args.edge
+        if args.landmark is not None:
+            config.TEST_INPAINT_LANDMARK_FLIST = args.landmark
 
         if args.output is not None:
             config.RESULTS = args.output
