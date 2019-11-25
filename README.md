@@ -79,7 +79,7 @@ To hold a quick-testing of our inpaint model, download our pre-trained models of
 python3 test.py --model 3 --checkpoints ./checkpoints/example
 ```
 and check the results in `checkpoints/example/results`.
-
+Please notice that, as no face detector is applied at the landmark prediction stage, the landmark predictor is sensitive to the scale of face images. If the provided pre-trained model generalize poorly on your own dataset, you may need to train your own model basing on your dataset.
 
 ### 1.Image Inpaint Part
 #### 1) Training 
