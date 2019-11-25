@@ -30,7 +30,7 @@ pip install -r requirements.txt
 
 Datasets
 ---------------------------------
-### 1.Inpaint
+### 1.Image Inpaint Part
 #### 1) Images: 
 We use [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html) and [CelebA-HQ](https://github.com/tkarras/progressive_growing_of_gans) datasets for inpaint. 
 
@@ -57,7 +57,7 @@ Our model is trained on a combination of random block masks and irregular masks.
 
 Then use `scripts/flist.py` to generate train/test/validataion masks file lists as above.
 
-### 2.Landmark Detection
+### 2.Augmented Landmark Detection
 To validate the landmark detection augmented by inpainted images, please firstly download [WFLW](https://wywu.github.io/projects/LAB/WFLW.html) dataset provided by Wu et al.. 
 
 After downloading, run `scripts/preprocess_wflw.py` to generate train/test/validation images and landmarks then run `scripts/flist.py` to generate train/test file lists.
@@ -80,7 +80,7 @@ python3 test.py --model 3 --checkpoints ./checkpoints/example
 and check the results in `checkpoints/example/results`.
 
 
-### 1.Image Inpaint
+### 1.Image Inpaint Part
 #### 1) Training 
 To train the model, create a `config.yml` file similar to `config.yml.example` and copy it to corresponding checkpoint folder. Following comments on `config.yml.example` to set `config.yml`.
 
@@ -109,9 +109,9 @@ For example, to test the inpaint model on CelebA dataset under `./checkpoints/ce
 ```
 python3 test.py --model 2 --checkpoints ./checkpoints/celeba
 ```
-### 2.Landmark Detection
+### 2.Augmented Landmark Detection
 #### 1) Training
-We suppose you use WFLW dataset to validate the augmentated landmark detection method.
+We suppose you use WFLW dataset to validate the augmented landmark detection method.
 To validate the augmentation methods, a landmark-guided inpaint model trained on WFLW (stage 2) is needed. You can train it by yourself following above steps or use the pre-trained models.
 
 Create a `config.yml` file similar to `config.yml.example` and copy it to corresponding checkpoint folder. Following comments on `config.yml.example` to set `config.yml`.
