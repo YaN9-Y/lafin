@@ -30,8 +30,8 @@ pip install -r requirements.txt
 
 Datasets
 ---------------------------------
-###1.Inpaint
-####1)Images: 
+### 1.Inpaint
+#### 1)Images: 
 We use [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html) and [CelebA-HQ](https://github.com/tkarras/progressive_growing_of_gans) datasets for inpaint. 
 
 After downloading, you should split the whole dataset to train, test and validation set and run `scripts/flist.py` to genrate corresponding filelists. For example, to generate the training set filelist on the CelebA dataset, you should run:
@@ -42,7 +42,7 @@ python3 ./scripts/flist.py --path path_to_celebA_train_set --output ./datasets/c
 
 For CelebA-HQ dataset, we use its 256x256 version. For CelebA dataset, the original image will be center cropped then resized to 256x256 during training.
 
-####2)Landmarks:
+#### 2)Landmarks:
 For CelebA and CelebA-HQ datasets, the landmarks given are not enough. So we apply [FAN](https://github.com/1adrianb/face-alignment) to generate landmarks as ground truth landmarks.
 
 You can run `scripts/preprocess_landmark.py` to generate landmarks of the images, then use `scripts/flist.py` to generate landmarks filelist. For example, to generate the landmarks of the CelebA training images, you should run:
@@ -52,12 +52,12 @@ python3 ./scripts/flist.py --path path_to_celebA_landmark_train_set --output ./d
 ```
 This may take a while.
 
-####3)Irregular Masks:
+#### 3)Irregular Masks:
 Our model is trained on a combination of random block masks and irregular masks. The irregular masks dataset provided by [Liu et al.](https://arxiv.org/abs/1804.07723) is available on [their website](http://masc.cs.gmu.edu/wiki/partialconv)
 
 Then use `scripts/flist.py` to generate train/test/validataion masks filelist as above.
 
-###2.Landmark Detection
+### 2.Landmark Detection
 To validate the landmark detection augmented by inpainted images, please firtly download [WFLW](https://wywu.github.io/projects/LAB/WFLW.html) dataset provided by Wu et al.. 
 
 After downloading, run `scripts/preprocess_wflw.py` to generate train/test/validation images and landmarks then run `scripts/flist.py` to generate train/test filelists.
@@ -72,8 +72,8 @@ To use the pre-trained models, download them from the following links then copy 
 
 [CelebA](https://drive.google.com/open?id=1lGFEbxbtZwpPA9JXF-bhv12Tdi9Zt08G) | [CelebA-HQ](https://drive.google.com/open?id=1Xwljrct3k75_ModHCkwcNjJk3Fsvv-ra) | [WFLW](https://drive.google.com/open?id=1I2MzHre1U3wqTu5ZmGD36OiXPaNqlOKb)
 
-###1.Image Inpaint
-####1)Training 
+### 1.Image Inpaint
+#### 1)Training 
 To train the model, create a `config.yml` file similar to `config.yml.example` and copy it to corresponding checkpoint folder. Following comments on `config.yml.example` to set `config.yml`.
 
 The inpaint model is trained in two stages: 1) train the landmark prediction model, 2) train the image inpaint model. To train the model, run:
@@ -90,7 +90,7 @@ python3 train.py --model 1 --checkpoints ./checkpoints/celeba
 
 The number of training iterations can be changed by setting `MAX_ITERS` in `config.yml`.
 
-####2)Testing
+#### 2)Testing
 To test the model, create a `config.yml` file similar to `config.yml.example` and copy it to corresponding checkpoint folder. Following comments on `config.yml.example` to set `config.yml`.
 
 
@@ -101,8 +101,8 @@ For example, to test the inpaint model on CelebA dataset under `./checkpoints/ce
 ```
 python3 test.py --model 2 --checkpoints ./checkpoints/celeba
 ```
-###2.Landmark Detection
-####1)Training
+### 2.Landmark Detection
+#### 1)Training
 We suppose you use WFLW dataset to validate the augmentated landmark detection method.
 To validate the augmentation methods, a landmark-guided inpaint model trained on WFLW (stage 2) is needed. You can train it by yourself following above steps or use the pre-trained models.
 
@@ -114,7 +114,7 @@ python3 train.py --model 1 --checkpoints ./checkpoints/wflw
 ```
 to start augmentated training.
 
-####2)Testing
+#### 2)Testing
 Create a `config.yml` file similar to `config.yml.example` and copy it to corresponding checkpoint folder. Following comments on `config.yml.example` to set `config.yml`.
 Then run:
 ```
