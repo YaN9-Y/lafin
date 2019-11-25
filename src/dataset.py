@@ -52,6 +52,8 @@ class Dataset(torch.utils.data.Dataset):
 
         if self.config.MODEL != 3:
             landmark = self.load_lmk([size, size], index, img.shape)
+        else: ## test on stage 3 doesn't need ground truth landmarks
+            landmark = np.zeros((68,2))
 
         if self.config.AUGMENTATION_TRAIN == 1 and self.config.MODEL == 1:
             landmark_orig = landmark.copy()
