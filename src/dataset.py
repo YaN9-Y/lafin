@@ -80,7 +80,7 @@ class Dataset(torch.utils.data.Dataset):
             landmark = self.shuffle_lr(landmark)
 
             mask = mask[:, ::-1, ...]
-            if self.config.AUGMENTATION_TRAIN == 1:
+            if self.config.AUGMENTATION_TRAIN == 1 and self.config.MODEL == 1:
                 mask2 = mask2[:,::-1,...]
 
         if self.augment and self.config.MODEL == 1 and np.random.uniform(0,1)<=0.2:
