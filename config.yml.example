@@ -1,0 +1,47 @@
+MODE: 1             # 1: train, 2: test, 3: eval
+MODEL: 1            # 1: edge model, 2: inpaint model, 3: edge-inpaint model
+MASK: 4             # 1: random block, 2: center mask, 3: external, 4: 50% external, 50% random block, 5: (50% no mask, 25% ramdom block, 25% external)
+SEED: 10            # random seed
+GPU: [0]            # list of gpu ids
+AUGMENTATION_TRAIN: 0 # 1: use augmentation to train landmark predictor # 2:not use
+LANDMARK_POINTS: 68 # 68 for celeba, celeba-hq and 300w, 98 for wflw
+
+TRAIN_INPAINT_IMAGE_FLIST: ./datasets/celeba_train_images.flist      #training image set for inpaint model(stage 2 and 3)
+VAL_INPAINT_IMAGE_FLIST: ./datasets/celeba_val_images.flist          #validation image set for inpaint model(stage 2 and 3)
+TEST_INPAINT_IMAGE_FLIST: ./datasets/celeba_test_images.flist        #testing image set for inpaint model(stage 2 and 3)
+
+TRAIN_INPAINT_LANDMARK_FLIST: ./datasets/celeba_train_landmarks.flist #training landmark set for inpaint model (stage 2 and 3)
+VAL_INPAINT_LANDMARK_FLIST: ./datasets/celeba_val_landmarks.flist  #validation landmark set for inpaint model (stage 2 and 3)
+TEST_INPAINT_LANDMARK_FLIST: ./datasets/celeba_test_landmarks.flist #testing landmark set for inpaint model (stage 2)(test on stage 3 doesn't need test landmark flist) 
+
+TRAIN_MASK_FLIST: ./datasets/mask.flist #training mask set for all stages
+VAL_MASK_FLIST: ./datasets/mask.flist  #validation mask set for all stages
+TEST_MASK_FLIST: ./datasets/mask.flist #testing mask set for all stages
+
+TRAIN_LANDMARK_LANDMARK_FLIST: ./datasets/wflw_train_landmarks.flist #training landmark set for landmark model (stage 1)
+TEST_LANDMARK_LANDMARK_FLIST: ./datasets/wflw_test_landmarks.flist #testing landmark set for landmark model (stage 1)
+TRAIN_LANDMARK_IMAGE_FLIST: ./datasets/wflw_train_images.flist #training image set for landmark model(stage 1)
+TEST_LANDMARK_IMAGE_FLIST: ./datasets/wflw_test_images.flist #testing image set for landmark model(stage 1)
+
+LR: 0.0001                    # learning rate
+D2G_LR: 0.1                   # discriminator/generator learning rate ratio
+BETA1: 0.0                    # adam optimizer beta1
+BETA2: 0.9                    # adam optimizer beta2
+BATCH_SIZE: 4                 # input batch size for training
+INPUT_SIZE: 256               # input image size for training 0 for original size
+MAX_ITERS: 1300000                # maximum number of iterations to train the model
+
+L1_LOSS_WEIGHT: 1             # l1 loss weight
+STYLE_LOSS_WEIGHT: 250        # style loss weight
+CONTENT_LOSS_WEIGHT: 0.1      # perceptual loss weight
+INPAINT_ADV_LOSS_WEIGHT: 0.01 # adversarial loss weight
+TV_LOSS_WEIGHT: 0.1           # total variation loss weight
+
+GAN_LOSS: lsgan               # nsgan | lsgan | hinge
+GAN_POOL_SIZE: 0              # fake images pool size
+
+SAVE_INTERVAL: 1000           # how many iterations to wait before saving model (0: never)
+SAMPLE_INTERVAL: 500          # how many iterations to wait before sampling (0: never)
+SAMPLE_SIZE: 4                # number of images to sample
+EVAL_INTERVAL: 0              # how many iterations to wait before model evaluation (0: never)
+LOG_INTERVAL: 100              # how many iterations to wait before logging training status (0: never)
