@@ -1,6 +1,6 @@
 LaFIn: Generative Landmark Guided Face Inpainting
 =================================
-This is the PyTorch implementation of paper 'LaFIn: Generative Landmark Guided Face Inpainting' [arXiv](https://arxiv.org).
+This is the PyTorch implementation of paper 'LaFIn: Generative Landmark Guided Face Inpainting'.
 
 Introduction
 ---------------------------------
@@ -19,7 +19,7 @@ Installation
 ---------------------------------
 * Clone this repo:
 ```
-git clone https://github.com/YaN9-Y/LaFIn
+git clone https://github.com/YaN9-Y/lafin
 cd lafin
 ```
 * Install Pytorch
@@ -58,7 +58,7 @@ Our model is trained on a combination of random block masks and irregular masks.
 Then use `scripts/flist.py` to generate train/test/validataion masks filelist as above.
 
 ### 2.Landmark Detection
-To validate the landmark detection augmented by inpainted images, please firtly download [WFLW](https://wywu.github.io/projects/LAB/WFLW.html) dataset provided by Wu et al.. 
+To validate the landmark detection augmented by inpainted images, please firstly download [WFLW](https://wywu.github.io/projects/LAB/WFLW.html) dataset provided by Wu et al.. 
 
 After downloading, run `scripts/preprocess_wflw.py` to generate train/test/validation images and landmarks then run `scripts/flist.py` to generate train/test filelists.
 ```
