@@ -133,7 +133,7 @@ to start testing the landmark detection model on WFLW.
 
 Citation
 ------------------------------------------
-If you use this code in your research, please cite our paper [LaFIn: Generative Landmark Guided Face Inpainting:]
+If you use this code in your research, please cite our paper.
 
 ```
 @inproceedings{yang2019lafin,
