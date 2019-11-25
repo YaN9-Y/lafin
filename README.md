@@ -20,7 +20,7 @@ Installation
 * Clone this repo:
 ```
 git clone https://github.com/YaN9-Y/lafin
-cd lafin
+cd lafin-master
 ```
 * Install Pytorch
 * Install python requirements:
