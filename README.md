@@ -11,7 +11,7 @@ addition, we validated that high-quality completed faces together with their lan
 
 Prerequisites
 ---------------------------------
-* Python3
+* Python 3.7
 * Pytorch 1.0
 * NVIDIA GPU + CUDA cuDNN
 
