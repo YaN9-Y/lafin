@@ -72,6 +72,13 @@ To use the pre-trained models, download them from the following links then copy 
 
 [CelebA](https://drive.google.com/open?id=1lGFEbxbtZwpPA9JXF-bhv12Tdi9Zt08G) | [CelebA-HQ](https://drive.google.com/open?id=1Xwljrct3k75_ModHCkwcNjJk3Fsvv-ra) | [WFLW](https://drive.google.com/open?id=1I2MzHre1U3wqTu5ZmGD36OiXPaNqlOKb)
 
+To hold a quick-testing of our inpaint model, download our pre-trained models of CelebA-HQ and put them into `checkpoints/example`, then run:
+```
+python3 test.py --model 3 --checkpoints ./checkpoints/example
+```
+and check the results in `checkpoints/example/results`.
+
+
 ### 1.Image Inpaint
 #### 1) Training 
 To train the model, create a `config.yml` file similar to `config.yml.example` and copy it to corresponding checkpoint folder. Following comments on `config.yml.example` to set `config.yml`.
