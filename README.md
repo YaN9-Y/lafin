@@ -19,7 +19,7 @@ Installation
 ---------------------------------
 * Clone this repo:
 ```
-git clone https://
+git clone https://github.com/YaN9-Y/LaFIn
 cd lafin
 ```
 * Install Pytorch
