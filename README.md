@@ -43,7 +43,7 @@ python3 ./scripts/flist.py --path path_to_celebA_train_set --output ./datasets/c
 For CelebA-HQ dataset, we use its 256x256 version. For CelebA dataset, the original image will be center cropped then resized to 256x256 during training.
 
 #### 2) Landmarks:
-For CelebA and CelebA-HQ datasets, the landmarks given are not enough. So we apply [FAN](https://github.com/1adrianb/face-alignment) to generate landmarks as ground truth landmarks.
+For CelebA and CelebA-HQ datasets, the landmarks given by the original dataset are not enough (only 5). So we apply [FAN](https://github.com/1adrianb/face-alignment) to generate landmarks as ground truth landmarks.
 
 You can run `scripts/preprocess_landmark.py` to generate landmarks of the images, then use `scripts/flist.py` to generate landmarks file list. For example, to generate the landmarks of the CelebA training images, you should run:
 ```
