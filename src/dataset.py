@@ -62,7 +62,7 @@ class Dataset(torch.utils.data.Dataset):
 
         # resize/crop if needed
         if size != 0:
-            img = self.resize(img, size, size)
+            img = self.resize(img, size, size, centerCrop=True)
 
         # load mask
         mask = self.load_mask(img, index)

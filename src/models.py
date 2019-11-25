@@ -60,7 +60,7 @@ class InpaintingModel(BaseModel):
     def __init__(self, config):
         super(InpaintingModel, self).__init__('InpaintingModel', config)
 
-        # generator input: [rgb(3) + edge(1)]
+        # generator input: [rgb(3) + landmark(1)]
         # discriminator input: [rgb(3)]
         generator = InpaintGenerator()
         discriminator = Discriminator(in_channels=4, use_sigmoid=config.GAN_LOSS != 'hinge')
@@ -96,7 +96,7 @@ class InpaintingModel(BaseModel):
 
 
 
-    def process(self, images, edges, masks):
+    def process(self, images, landmarks, masks):
         self.iteration += 1
 
         # zero optimizers
@@ -106,7 +106,7 @@ class InpaintingModel(BaseModel):
 
         # process outputs
 
-        outputs = self(images, edges, masks)
+        outputs = self(images, landmarks, masks)
 
         
         gen_loss = 0
@@ -116,8 +116,8 @@ class InpaintingModel(BaseModel):
         # discriminator loss
         dis_input_real = images
         dis_input_fake = outputs.detach()
-        dis_real, _ = self.discriminator(torch.cat((dis_input_real,edges),dim=1))                   # in: [rgb(3)+landmark(1)]
-        dis_fake, _ = self.discriminator(torch.cat((dis_input_fake,edges),dim=1))                   # in: [rgb(3)+landmark(1)]
+        dis_real, _ = self.discriminator(torch.cat((dis_input_real, landmarks), dim=1))                   # in: [rgb(3)+landmark(1)]
+        dis_fake, _ = self.discriminator(torch.cat((dis_input_fake, landmarks), dim=1))                   # in: [rgb(3)+landmark(1)]
         dis_real_loss = self.adversarial_loss(dis_real, True, True)
         dis_fake_loss = self.adversarial_loss(dis_fake, False, True)
         dis_loss += (dis_real_loss + dis_fake_loss) / 2
@@ -125,7 +125,7 @@ class InpaintingModel(BaseModel):
 
         # generator adversarial loss
         gen_input_fake = outputs
-        gen_fake, _ = self.discriminator(torch.cat((gen_input_fake,edges),dim=1) )                   # in: [rgb(3)]
+        gen_fake, _ = self.discriminator(torch.cat((gen_input_fake, landmarks), dim=1))                   # in: [rgb(3)]
         gen_gan_loss = self.adversarial_loss(gen_fake, True, False) * self.config.INPAINT_ADV_LOSS_WEIGHT
         gen_loss += gen_gan_loss
 
@@ -158,15 +158,15 @@ class InpaintingModel(BaseModel):
 
         return outputs, gen_loss, dis_loss, logs
 
-    def forward(self, images, edges, masks):
+    def forward(self, images, landmarks, masks):
         images_masked = (images * (1 - masks).float()) + masks
-        inputs = torch.cat((images_masked, edges), dim=1)
+        inputs = torch.cat((images_masked, landmarks), dim=1)
         scaled_masks_quarter = F.interpolate(masks, size=[int(masks.shape[2] / 4), int(masks.shape[3] / 4)],
                                      mode='bilinear', align_corners=True)
         scaled_masks_half = F.interpolate(masks, size=[int(masks.shape[2] / 2), int(masks.shape[3] / 2)],
                                      mode='bilinear', align_corners=True)
 
-        outputs = self.generator(inputs,masks,scaled_masks_half,scaled_masks_quarter)                                    # in: [rgb(3) + edge(1)]
+        outputs = self.generator(inputs,masks,scaled_masks_half,scaled_masks_quarter)                                    # in: [rgb(3) + landmark(1)]
         return outputs
 
     def backward(self, gen_loss = None, dis_loss = None):

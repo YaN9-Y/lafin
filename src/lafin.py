@@ -94,21 +94,6 @@ class Lafin():
             self.inpaint_model.save()
 
 
-    def cal_weighted_mae(self, images1, images2, masks):
-        '''
-        :param images1:[B,C,H,W]
-        :param images2: [B,C,H,W]
-        :return:
-        '''
-
-        mae = 0
-        for i in range(images1.shape[0]):
-            mae += self.cal_mae(images1[i],images2[i]) / torch.sum(masks[i])
-
-        mae = mae / images1.shape[0]
-
-        return mae
-
     def train(self):
         train_loader = DataLoader(
             dataset=self.train_dataset,
