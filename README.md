@@ -92,7 +92,7 @@ The inpaint model is trained in two stages: 1) train the landmark prediction mod
 python train.py --model [stage] --checkpoints [path to checkpoints]
 ``` 
 
-For example, to train the landmark prediction model on CelebA dataset under `./checkpoints/celeba` folder, run:
+For example, to train the landmark prediction model on CelebA dataset, the checkpoints folder is `./checkpoints/celeba` folder, run:
 
 ```
 python3 train.py --model 1 --checkpoints ./checkpoints/celeba
@@ -117,7 +117,7 @@ We suppose you use WFLW dataset to validate the augmented landmark detection met
 To validate the augmentation methods, a landmark-guided inpaint model trained on WFLW (stage 2) is needed. You can train it by yourself following above steps or use the pre-trained models.
 
 Create a `config.yml` file similar to `config.yml.example` and copy it to corresponding checkpoint folder. Following comments on `config.yml.example` to set `config.yml`.
-Remeber set AUGMENTATION_TRAIN = 1 to enable augmentation with inpainted images, amd LANDMARK_POINTS = 98 in `config.yml`.
+Remeber set `AUGMENTATION_TRAIN = 1` to enable augmentation with inpainted images, amd `LANDMARK_POINTS = 98` in `config.yml`.
 Then run:
 ```
 python3 train.py --model 1 --checkpoints ./checkpoints/wflw
@@ -130,7 +130,7 @@ Then run:
 ```
 python3 test.py --model 1 --checkpoints ./checkpoints/wflw
 ```
-to start testing the landmark detection model on WFLW.
+to start testing the landmark detection model on WFLW. Set `MASK = 0` in `config.yml` to achieve the highest accuracy.
 
 
 Citation
