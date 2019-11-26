@@ -3,7 +3,7 @@ MODEL: 1            # 1: edge model, 2: inpaint model, 3: edge-inpaint model
 MASK: 4             # 0: no mask(for testing landmark detector) 1: random block, 2: center mask, 3: external, 4: 50% external, 50% random block, 5: (50% no mask, 25% ramdom block, 25% external)
 SEED: 10            # random seed
 GPU: [0]            # list of gpu ids
-AUGMENTATION_TRAIN: 0 # 1: use augmentation to train landmark predictor  2: not use
+AUGMENTATION_TRAIN: 0 # 1: use augmentation to train landmark predictor  0: not use
 LANDMARK_POINTS: 68 # 68 for celeba, celeba-hq and 300w, 98 for wflw
 
 TRAIN_INPAINT_IMAGE_FLIST: ./datasets/celeba_train_images.flist      #training image set for inpaint model(stage 2 and 3)
