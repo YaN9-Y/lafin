@@ -1,6 +1,6 @@
 MODE: 2             # 1: train, 2: test, 3: eval
 MODEL: 3            # 1: edge model, 2: inpaint model, 3: edge-inpaint model
-MASK: 6             # 1: random block, 2: center mask, 3: external, 4: 50% external, 50% random block, 5: (50% no mask, 25% ramdom block, 25% external)
+MASK: 6             # 0: no mask, 1: random block, 2: center mask, 3: external, 4: 50% external, 50% random block, 5: (50% no mask, 25% ramdom block, 25% external) 6: external non-random
 SEED: 10            # random seed
 GPU: [0]            # list of gpu ids
 AUGMENTATION_TRAIN: 0 # 1: use augmentation to train landmark predictor  0:not use
