@@ -255,13 +255,7 @@ class Lafin():
                 for i in range(landmarks.shape[0]):
                     landmark_map[i, 0, landmarks[i, 0:self.config.LANDMARK_POINTS, 1], landmarks[i,0:self.config.LANDMARK_POINTS,0]] = 1
 
-                inputs = (images * (1 - masks))
-
-                for i in range(inputs.shape[0]):
-                    inputs[i, :, landmarks[i, 0:self.config.LANDMARK_POINTS, 1],
-                    landmarks[i, 0:self.config.LANDMARK_POINTS, 0]] = 1
-
-                outputs = self.inpaint_model(images, landmark_map, masks)
+                outputs, gen_loss, dis_loss, logs = self.inpaint_model.process(images, landmark_map, masks)
                 outputs_merged = (outputs * masks) + (images * (1 - masks))
 
                 # metrics
