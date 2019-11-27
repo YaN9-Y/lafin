@@ -1,6 +1,6 @@
 LaFIn: Generative Landmark Guided Face Inpainting
 =================================
-This is the PyTorch implementation of paper 'LaFIn: Generative Landmark Guided Face Inpainting'.
+This is the PyTorch implementation of paper 'LaFIn: Generative Landmark Guided Face Inpainting'. [arXiv](https://arxiv.org/abs/1911.11394)
 
 Introduction
 ---------------------------------
@@ -135,7 +135,7 @@ to start testing the landmark detection model on WFLW. Set `MASK = 0` in `config
 
 Citation
 ------------------------------------------
-If you use this code in your research, please cite our paper.
+If you use this code in your research, please cite our [paper](https://arxiv.org/abs/1911.11394).
 
 ```
 @inproceedings{yang2019lafin,
