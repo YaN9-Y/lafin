@@ -104,7 +104,7 @@ The number of training iterations can be changed by setting `MAX_ITERS` in `conf
 To test the model, create a `config.yml` file similar to `config.yml.example` and copy it to corresponding checkpoint folder. Following comments on `config.yml.example` to set `config.yml`.
 
 
-The model can be tested in 3 stages (landmark prediction model, inpaint model and joint model).
+The model can be tested in 3 stages (landmark prediction model, inpaint model(inpaint using ground-truth landmarks) and joint model(inpainting using predicted landmarks)).
 The file list of test images and landmarks can be generated using `scripts/flist.py` then set in the `config.yml` file. For testing stage 3, the test landmark file list is not needed.
 
 For example, to test the inpaint model on CelebA dataset under `./checkpoints/celeba` folder, run:
