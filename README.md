@@ -1,6 +1,6 @@
 LaFIn: Generative Landmark Guided Face Inpainting
 =================================
-This is the PyTorch implementation of paper 'LaFIn: Generative Landmark Guided Face Inpainting'. [arXiv](https://arxiv.org/abs/1911.11394), [conference](https://link.springer.com/chapter/10.1007/978-3-030-60633-6_2)
+This is the PyTorch implementation of paper 'LaFIn: Generative Landmark Guided Face Inpainting', which is accepted by PRCV2020 as Best Student Paper Runner-up. [arXiv](https://arxiv.org/abs/1911.11394), [PRCV](https://link.springer.com/chapter/10.1007/978-3-030-60633-6_2)
 
 Introduction
 ---------------------------------
