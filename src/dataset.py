@@ -191,8 +191,9 @@ class Dataset(torch.utils.data.Dataset):
                 return flist
 
             if os.path.isfile(flist):
+                landmark_file = np.genfromtxt(flist, dtype=np.str, encoding='utf-8')
                 try:
-                    return np.genfromtxt(flist, dtype=np.str, encoding='utf-8')
+                    return np.atleast_1d(landmark_file) # ndarray must have at least one dimension
                 except Exception as e:
                     print(e)
                     return [flist]
