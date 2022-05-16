@@ -146,4 +146,11 @@ If you use this code in your research, please cite our paper.
   year={2020},
   organization={Springer}
 }
+
+@article{yang2019lafin,
+  title={Lafin: Generative landmark guided face inpainting},
+  author={Yang, Yang and Guo, Xiaojie and Ma, Jiayi and Ma, Lin and Ling, Haibin},
+  journal={arXiv preprint arXiv:1911.11394},
+  year={2019}
+}
 ```
