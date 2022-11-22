@@ -6,6 +6,6 @@ torch==1.0.1.post2
 matplotlib==3.0.3
 numpy==1.15.4
 face_alignment==1.0.1
-Pillow==6.2.1
+Pillow==9.3.0
 PyYAML==5.1.2
 skimage==0.0
